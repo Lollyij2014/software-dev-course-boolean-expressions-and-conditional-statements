@@ -28,18 +28,30 @@ const readline = require('readline-sync');
 
 const hasTorch = true;
 const hasMap = false;
+const hasSword = false;
+const hasCompass = true;
 
-console.log("You see two paths: one leads to the mountains, the other to the village.");
+console.log("You wake up in a mysterious forest.");
+console.log("There are two paths: one leads to the high mountains, the other to a strange village.");
+
 const choice = readline.question("Do you go to the 'mountains' or the 'village'?");
 
-if (choice === "mountains" && hasTorch) {
-  console.log("You safely navigate through the dark mountains.");
-} else if (choice === "mountains" && !hasTorch) {
-  console.log("It's too dark to proceed. You decide to turn back.");
-} else if (choice === "village" || hasMap) {
-  console.log("You find your way to the village.");
+if (choice === "mountains") {
+  if (hasTorch && hasSword) {
+    console.log("You climb the mountains and fight off a wild lion with your sword. You make it safely!");
+  } else if (hasTorch && !hasSword) {
+    console.log("You climb the mountains but get attacked by a wild lion and have no weapon. You run back down.");
+  } else {
+    console.log("It is too dark in the mountains. You turn back.");
+  }
+} else if (choice === "village") {
+  if (hasMap || hasCompass) {
+    console.log("You find your way through the strange village.");
+  } else {
+    console.log("You get lost in the village and can’t find your way.");
+  }
 } else {
-  console.log("You get lost and wander aimlessly.");
+  console.log("You stand still, unsure what to do. It is getting late and you wander into the forest.");
 }
 
 /* 
